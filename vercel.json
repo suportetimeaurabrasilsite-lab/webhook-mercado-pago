@@ -1,0 +1,24 @@
+{
+  "builds": [
+    {
+      "src": "smm-backend/src/main.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "smm-vendas-site/index.html",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "smm-vendas-site/dist" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "smm-backend/src/main.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "smm-vendas-site/dist/$1"
+    }
+  ]
+}
+ Adicionando vercel.json para deploy do backend
